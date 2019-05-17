@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Gehaltsrechner</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="btn_Calculate">Berechnen</string>
+    <string name="hint_brutto">Bruttogehalt</string>
+    <string name="hint_altersvorsorge">Betriebliche Altersvorsorge</string>
 </resources>
