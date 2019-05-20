@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class Fragment_Home extends Fragment {
+public class FragmentHome extends Fragment {
     private static final String TAG = "Fragment_Home";
 
     private Button btnCalculate;
@@ -20,14 +20,14 @@ public class Fragment_Home extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        btnCalculate = (Button) view.findViewById(R.id.btn_Calculate);
+        //btnCalculate = (Button) view.findViewById(R.id.btn_Calculate);
 
-        btnCalculate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "Fragment1" , Toast.LENGTH_SHORT).show();
-            }
-        });
+//        btnCalculate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getActivity(), "FragmentHome" , Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         return view;
     }
