@@ -5,65 +5,323 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_Calculate"
+    <EditText
+        android:id="@+id/kirche2"
+        android:layout_width="81dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:hint="Kirche"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textIsSelectable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.289"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kinderfreibetrag" />
+
+    <Spinner
+        android:id="@+id/dropdownfreibetrag2"
+        android:layout_width="68dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginRight="96dp"
+        android:entries="@array/Arbeitsstelle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/arbeitsstelle"
+        app:layout_constraintTop_toBottomOf="@+id/geburtstag" />
+
+    <EditText
+        android:id="@+id/arbeitsstelle"
+        android:layout_width="120dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Arbeitsstelle"
+        android:inputType="date"
+        app:layout_constraintTop_toBottomOf="@+id/geburtstag"
+        tools:layout_editor_absoluteX="99dp" />
+
+    <EditText
+        android:id="@+id/kinder"
+        android:layout_width="81dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:hint="Kinder"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textIsSelectable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.289"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/steuerklasse" />
+
+
+    <EditText
+        android:id="@+id/kirche"
+        android:layout_width="81dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:hint="Kirche"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textIsSelectable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.289"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kinderfreibetrag" />
+
+    <EditText
+        android:id="@+id/rentenvers."
+        android:layout_width="126dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:hint="Rentenvers."
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textIsSelectable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.338"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/arbeitsstelle" />
+
+    <EditText
+        android:id="@+id/zusatzbeitrag"
+        android:layout_width="138dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:hint="Zusatzbeitrag"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textIsSelectable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.354"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/krankenversicherungsbeitrag2" />
+
+    <EditText
+        android:id="@+id/krankenversicherungsbeitrag2"
+        android:layout_width="250dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:hint="Krankenversicherungsbeitrag"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textIsSelectable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kirchensteuer2" />
+
+    <EditText
+        android:id="@+id/kirchensteuer2"
+        android:layout_width="138dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:hint="Kirchensteuer"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textIsSelectable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.354"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kirche" />
+
+    <EditText
+        android:id="@+id/kinderfreibetrag"
+        android:layout_width="138dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:hint="Kinderfreibetrag"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textIsSelectable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.354"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kinder" />
+
+    <EditText
+        android:id="@+id/steuerklasse"
+        android:layout_width="132dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:hint="Steuerklasse"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textIsSelectable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.346"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bruttolohn" />
+
+    <EditText
+        android:id="@+id/bruttolohn"
+        android:layout_width="127dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:hint="Bruttolohn"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.339"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/dropdownsklasse"
+        android:layout_width="68dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginRight="96dp"
+        android:entries="@array/Steuerklasse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bruttolohn" />
+
+    <Spinner
+        android:id="@+id/dropdownfreibetrag"
+        android:layout_width="68dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginRight="96dp"
+        android:entries="@array/Kinderfreibetrag"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/kinderfreibetrag"
+        app:layout_constraintTop_toBottomOf="@+id/kinder" />
+
+    <EditText
+        android:id="@+id/geburtstag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="320dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/btn_Calculate"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/btn_Calculate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.348">
+        android:ems="10"
+        android:hint="Geburtstag"
+        android:inputType="date"
+        app:layout_constraintTop_toBottomOf="@+id/zusatzbeitrag"
+        tools:layout_editor_absoluteX="99dp" />
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/input_Brutto"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_brutto" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="91dp"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/btn_Calculate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:layout_constraintVertical_bias="0.0">
+        android:textOff="NEIN"
+        android:textOn="JA"
+        app:layout_constraintStart_toEndOf="@+id/kirche"
+        app:layout_constraintTop_toBottomOf="@+id/kinderfreibetrag" />
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/input_altersvorsorge"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_altersvorsorge" />
-    </android.support.design.widget.TextInputLayout>
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="91dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textOff="NEIN"
+        android:textOn="JA"
+        app:layout_constraintStart_toEndOf="@+id/rentenvers."
+        app:layout_constraintTop_toBottomOf="@+id/arbeitsstelle" />
+
+    <Switch
+        android:id="@+id/switch4"
+        android:layout_width="91dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textOff="NEIN"
+        android:textOn="JA"
+        app:layout_constraintStart_toEndOf="@+id/kirche"
+        app:layout_constraintTop_toBottomOf="@+id/kinderfreibetrag" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="91dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="4dp"
+        android:textOff="NEIN"
+        android:textOn="JA"
+        app:layout_constraintStart_toEndOf="@+id/kinder"
+        app:layout_constraintTop_toBottomOf="@+id/steuerklasse" />
 
 
 </android.support.constraint.ConstraintLayout>

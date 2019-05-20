@@ -1,19 +1,19 @@
 package com.example.gehaltsrechner;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-public class Calculation_Lohnsteuer {
-   private LocalDate geburtstag;
+public class CalculationLohnsteuer {
+   private LocalDateTime geburtstag;
    private int steuerklasse;
    private float kinderfreibetrag;
-   private int bundesland;
+   private String bundesland;
    private float bruttolohn;
    private int rentenversicherung;
    private int krankenversicherung;
-   private int krankenversicherungszusatz;
+   private float krankenversicherungszusatz;
    private boolean kirchensteuer;
 
-    public Calculation_Lohnsteuer(LocalDate geburtstag, int steuerklasse, float kinderfreibetrag, int bundesland, float bruttolohn, int rentenversicherung, int krankenversicherung, int krankenversicherungszusatz, boolean kirchensteuer) {
+    public CalculationLohnsteuer(LocalDateTime geburtstag, int steuerklasse, float kinderfreibetrag, String bundesland, float bruttolohn, int rentenversicherung, int krankenversicherung, float krankenversicherungszusatz, boolean kirchensteuer) {
         this.geburtstag = geburtstag;
         this.steuerklasse = steuerklasse;
         this.kinderfreibetrag = kinderfreibetrag;
@@ -23,5 +23,17 @@ public class Calculation_Lohnsteuer {
         this.krankenversicherung = krankenversicherung;
         this.krankenversicherungszusatz = krankenversicherungszusatz;
         this.kirchensteuer = kirchensteuer;
+    }
+
+    private  boolean checkAlterUeber64(LocalDateTime geburtstag){
+        LocalDateTime aktuellesJahr = LocalDateTime.now();
+
+        if(aktuellesJahr.getYear() - geburtstag.getYear() >= 64){
+
+        }
+
+
+
+        return false;
     }
 }

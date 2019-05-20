@@ -3,7 +3,6 @@ package com.example.gehaltsrechner;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager){
         SectionStatePageAdapter adapter = new SectionStatePageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Fragment_Home(), "Home");
+        adapter.addFragment(new FragmentHome(), "Home");
         viewPager.setAdapter(adapter);
     }
 
