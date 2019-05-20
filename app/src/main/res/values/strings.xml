@@ -5,4 +5,45 @@
     <string name="btn_Calculate">Berechnen</string>
     <string name="hint_brutto">Bruttogehalt</string>
     <string name="hint_altersvorsorge">Betriebliche Altersvorsorge</string>
+
+    <string-array name="Steuerklasse">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="Kinderfreibetrag">
+        <item>0,5</item>
+        <item>1,0</item>
+        <item>1,5</item>
+        <item>2,0</item>
+        <item>2,5</item>
+        <item>3,0</item>
+        <item>3,5</item>
+        <item>4,0</item>
+        <item>4,5</item>
+        <item>5,0</item>
+        <item>5,5</item>
+        <item>6,0</item>
+    </string-array>
+
+    <string-array name="Arbeitsstelle">
+    <item>Baden-Württemberg</item>
+    <item>Bayern</item>
+    <item>Berlin</item>
+    <item>Brandenburg</item>
+    <item>Bremen</item>
+    <item>Hessen</item>
+    <item>Mecklenburg-Vorpommern</item>
+    <item>Niedersachsen</item>
+    <item>Nordrhein-Westfalen</item>
+    <item>Saarland</item>
+    <item>Sachsen-Anhalt</item>
+    <item>Schleswig-Holstein</item>
+    </string-array>
+
+
+
 </resources>

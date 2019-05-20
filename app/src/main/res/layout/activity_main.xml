@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/kinderfreibetrag" />
 
     <Spinner
-        android:id="@+id/dropdownfreibetrag2"
+        android:id="@+id/dropdownarbeitsstelle"
         android:layout_width="68dp"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
@@ -48,18 +48,23 @@
         android:entries="@array/Arbeitsstelle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/arbeitsstelle"
-        app:layout_constraintTop_toBottomOf="@+id/geburtstag" />
+        app:layout_constraintTop_toBottomOf="@+id/geburtstag"
+        android:spinnerMode="dropdown"/>
 
     <EditText
         android:id="@+id/arbeitsstelle"
-        android:layout_width="120dp"
-        android:layout_height="43dp"
+        android:layout_width="114dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Arbeitsstelle"
         android:inputType="date"
-        app:layout_constraintTop_toBottomOf="@+id/geburtstag"
-        tools:layout_editor_absoluteX="99dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/geburtstag" />
 
     <EditText
         android:id="@+id/kinder"
@@ -258,7 +263,8 @@
         android:layout_marginRight="96dp"
         android:entries="@array/Steuerklasse"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bruttolohn" />
+        app:layout_constraintTop_toBottomOf="@+id/bruttolohn"
+        android:spinnerMode="dropdown"/>/>
 
     <Spinner
         android:id="@+id/dropdownfreibetrag"
@@ -272,18 +278,22 @@
         android:entries="@array/Kinderfreibetrag"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/kinderfreibetrag"
-        app:layout_constraintTop_toBottomOf="@+id/kinder" />
+        app:layout_constraintTop_toBottomOf="@+id/kinder"
+        android:spinnerMode="dropdown"/>/>
 
     <EditText
         android:id="@+id/geburtstag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Geburtstag"
         android:inputType="date"
-        app:layout_constraintTop_toBottomOf="@+id/zusatzbeitrag"
-        tools:layout_editor_absoluteX="99dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zusatzbeitrag" />
 
     <Switch
         android:id="@+id/switch1"
