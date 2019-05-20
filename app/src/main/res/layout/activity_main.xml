@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <EditText
         android:id="@+id/kirche2"
         android:layout_width="81dp"
