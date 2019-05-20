@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string-array name="Steuerklasse">1, 2, 3, 4, 5, 6</string-array>
+    <string-array name="Kinderfreibetrag">0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5;</string-array>
+    <string-array name="Arbeitsstelle">"Baden-Württemberg", "Bayern","Berlin", "Brandenburg", "Bremen", "Hamburg", "Hessen", "Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen", "Saarland", "Sachsen-Anhalt", "Schleswig-Holstein"; </string-array>  />
+</resources>
