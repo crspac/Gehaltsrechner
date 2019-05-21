@@ -82,12 +82,6 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
             }
         });
 
-
-
-
-
-
-
         return view;
     }
 
