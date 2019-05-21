@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -37,7 +38,7 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
     //       }
     //   });
 
-        Spinner spinner = (Spinner) view.findViewById(R.id.dropdownfreibetrag);
+        final Spinner spinner = (Spinner) view.findViewById(R.id.dropdownfreibetrag);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.Kinderfreibetrag, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -58,19 +59,29 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
 
         spinner.setOnItemSelectedListener(this);
 
-        RadioButton rButton = (RadioButton) view.findViewById(R.id.rBtnKinderYes);
+
+        RadioButton rButtonYes = view.findViewById(R.id.rBtnKinderYes);
+        RadioButton rButtonNo = (RadioButton) view.findViewById(R.id.rBtnKinderNo);
         RadioButton rButton1 = (RadioButton) view.findViewById(R.id.rBtnKircheJa);
         RadioButton rButton2 = (RadioButton) view.findViewById(R.id.rBtnRenteJa);
-        TextView KifreiBetr = (TextView) view.findViewById(R.id.kinderfreibetrag);
+        final TextView KifreiBetr = (TextView) view.findViewById(R.id.kinderfreibetrag);
         EditText Kirchensteuer1 = (EditText) view.findViewById(R.id.kirchensteuer2);
+        KifreiBetr.setVisibility(View.INVISIBLE);
 
 
+        rButtonYes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    KifreiBetr.setVisibility(View.VISIBLE);
+                    spinner.setVisibility(View.VISIBLE);
+                }else{
+                    KifreiBetr.setVisibility(View.INVISIBLE);
+                    spinner.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
 
-        if (rButton.isChecked())
-        {
-            KifreiBetr.setVisibility(View.VISIBLE);
-            spinner1.setVisibility(View.VISIBLE);
-        }
 
 
 

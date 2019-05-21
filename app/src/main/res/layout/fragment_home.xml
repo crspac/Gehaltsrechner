@@ -177,7 +177,7 @@
         android:text="Kinderfreibetrag"
         android:textIsSelectable="false"
         android:textSize="23dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.288"
         app:layout_constraintStart_toStartOf="parent"
@@ -295,6 +295,7 @@
             android:layout_width="65dp"
             android:layout_height="43dp"
             android:layout_weight="1"
+            android:checked="false"
             android:text="Ja" />
 
         <RadioButton
