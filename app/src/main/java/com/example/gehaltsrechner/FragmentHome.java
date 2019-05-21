@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -55,6 +56,16 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
 
         spinner.setOnItemSelectedListener(this);
 
+        RadioButton rButton = (RadioButton) view.findViewById(R.id.rBtnKinderYes);
+        RadioButton rButton1 = (RadioButton) view.findViewById(R.id.rBtnKircheJa);
+        RadioButton rButton2 = (RadioButton) view.findViewById(R.id.rBtnRenteJa);
+        
+
+
+        rButton.isChecked()
+
+
+
         return view;
     }
 
@@ -79,4 +90,6 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
 }
