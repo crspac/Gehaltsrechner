@@ -90,6 +90,7 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
             }
         });
 
+
         rButton1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -122,9 +123,6 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
 
             }
         });
-
-
-
 
 
         return view;
