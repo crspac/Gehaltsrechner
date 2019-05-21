@@ -65,7 +65,7 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
         RadioButton rButton1 = (RadioButton) view.findViewById(R.id.rBtnKircheJa);
         RadioButton rButton2 = (RadioButton) view.findViewById(R.id.rBtnRenteJa);
         final TextView KifreiBetr = (TextView) view.findViewById(R.id.kinderfreibetrag);
-        EditText Kirchensteuer1 = (EditText) view.findViewById(R.id.kirchensteuer2);
+        final EditText Kirchensteuer1 = (EditText) view.findViewById(R.id.kirchensteuer2);
         KifreiBetr.setVisibility(View.INVISIBLE);
 
 
@@ -82,9 +82,17 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
             }
         });
 
+        rButton1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    Kirchensteuer1.setVisibility(View.VISIBLE);
 
-
-
+                }else{
+                    Kirchensteuer1.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
 
 
 
