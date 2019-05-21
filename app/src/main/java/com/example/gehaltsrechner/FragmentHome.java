@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class FragmentHome extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -59,10 +61,19 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
         RadioButton rButton = (RadioButton) view.findViewById(R.id.rBtnKinderYes);
         RadioButton rButton1 = (RadioButton) view.findViewById(R.id.rBtnKircheJa);
         RadioButton rButton2 = (RadioButton) view.findViewById(R.id.rBtnRenteJa);
-        
+        TextView KifreiBetr = (TextView) view.findViewById(R.id.kinderfreibetrag);
+        EditText Kirchensteuer1 = (EditText) view.findViewById(R.id.kirchensteuer2);
 
 
-        rButton.isChecked()
+
+        if (rButton.isChecked())
+        {
+            KifreiBetr.setVisibility(View.VISIBLE);
+            spinner1.setVisibility(View.VISIBLE);
+        }
+
+
+
 
 
 
