@@ -103,6 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/arbeitsstelle" />
 
     <EditText
+        android:textSize="23dp"
         android:id="@+id/zusatzbeitrag"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
@@ -123,6 +124,7 @@
         app:layout_constraintTop_toBottomOf="@+id/krankenversicherungsbeitrag2" />
 
     <EditText
+        android:textSize="23dp"
         android:id="@+id/krankenversicherungsbeitrag2"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
@@ -155,13 +157,15 @@
         android:selectAllOnFocus="false"
         android:singleLine="false"
         android:textIsSelectable="false"
+        android:textSize="23dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/kirche" />
 
     <TextView
+
         android:id="@+id/kinderfreibetrag"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
@@ -184,6 +188,7 @@
         app:layout_constraintTop_toBottomOf="@+id/kinder" />
 
     <TextView
+
         android:id="@+id/steuerklasse"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
@@ -217,8 +222,9 @@
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
         android:singleLine="false"
+        android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -252,6 +258,7 @@
         app:layout_constraintTop_toBottomOf="@+id/kinder" />
 
     <EditText
+        android:textSize="23dp"
         android:id="@+id/geburtstag"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
@@ -275,10 +282,11 @@
         android:ems="10"
         android:hint="Hier Lohnsteuer"
         android:inputType="number"
+        android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rentenvers." />
+        app:layout_constraintTop_toBottomOf="@+id/editTextRentenbeitrag" />
 
     <RadioGroup
         android:layout_width="0dp"
@@ -337,39 +345,36 @@
     </RadioGroup>
 
 
-    <RadioGroup
-        android:id="@+id/rGroupRente"
-        android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/rentenvers."
-        app:layout_constraintTop_toBottomOf="@+id/arbeitsstelle">
-
-        <RadioButton
-            android:id="@+id/rBtnRenteJa"
-            android:layout_width="65dp"
-            android:layout_height="43dp"
-            android:layout_weight="1"
-            android:text="Ja" />
-
-        <RadioButton
-            android:id="@+id/rBtnRenteNein"
-            android:layout_width="65dp"
-            android:layout_height="43dp"
-            android:layout_weight="1"
-            android:text="Nein" />
-    </RadioGroup>
-
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="16dp" />
+
+    <Spinner
+        android:id="@+id/spinnerRente"
+        android:layout_width="70dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:entries="@array/Rentenversicherung"
+        app:layout_constraintStart_toEndOf="@+id/rentenvers."
+        app:layout_constraintTop_toBottomOf="@+id/arbeitsstelle" />
+
+    <EditText
+        android:id="@+id/editTextRentenbeitrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="124dp"
+        android:ems="10"
+        android:hint="Rentenversicherungsbeitrag"
+        android:inputType="textPersonName"
+        android:textSize="23dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rentenvers." />
 
 
 </android.support.constraint.ConstraintLayout>

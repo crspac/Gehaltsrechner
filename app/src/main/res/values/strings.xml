@@ -44,6 +44,10 @@
     <item>Schleswig-Holstein</item>
     </string-array>
 
-
+    <string-array name="Rentenversicherung">
+        <item>Gesetzlich Pflichtversichert</item>
+        <item>Privatversichert</item>
+        <item>Nicht versichert</item>
+    </string-array>
 
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,14 +60,21 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
 
         spinner.setOnItemSelectedListener(this);
 
+        Spinner spinner3 = (Spinner) view.findViewById(R.id.spinnerRente);
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(getContext(), R.array.Rentenversicherung, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(this);
+
 
         RadioButton rButtonYes = view.findViewById(R.id.rBtnKinderYes);
         RadioButton rButtonNo = (RadioButton) view.findViewById(R.id.rBtnKinderNo);
         RadioButton rButton1 = (RadioButton) view.findViewById(R.id.rBtnKircheJa);
-        RadioButton rButton2 = (RadioButton) view.findViewById(R.id.rBtnRenteJa);
         final TextView KifreiBetr = (TextView) view.findViewById(R.id.kinderfreibetrag);
         final EditText Kirchensteuer1 = (EditText) view.findViewById(R.id.kirchensteuer2);
         KifreiBetr.setVisibility(View.INVISIBLE);
+        final EditText Rente = view.findViewById(R.id.editTextRentenbeitrag);
 
 
         rButtonYes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -93,6 +101,29 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
                 }
             }
         });
+
+
+        spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String spinnervalue = parent.getSelectedItem().toString();
+                Log.i("spinnervalue", ".." + spinnervalue);
+
+                if (parent.getItemAtPosition(position).equals("Privatversichert")){
+
+                    Rente.setVisibility(View.VISIBLE);
+                } else {
+                    Rente.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
 
 
 
