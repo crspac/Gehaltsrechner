@@ -27,13 +27,10 @@ public class CalculationLohnsteuer {
 
     private  boolean checkAlterUeber64(LocalDateTime geburtstag){
         LocalDateTime aktuellesJahr = LocalDateTime.now();
-
         if(aktuellesJahr.getYear() - geburtstag.getYear() >= 64){
-
+            return true;
+        }else {
+            return false;
         }
-
-
-
-        return false;
     }
 }
