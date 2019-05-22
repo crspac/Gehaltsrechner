@@ -14,15 +14,14 @@ public class CalculationSteuer {
     private double bruttolohn;
     private String rentenversicherung;
     private String krankenversicherung;
-    private String pflegeversicherung;
-    private String arbeitslosenversicherung;
+    //private String arbeitslosenversicherung;
     private double krankenversicherungszusatz;
     private double rentenversicherungprivat;
     private boolean kirchensteuer;
 
 
 
-    public CalculationSteuer(int year, int month, int day, double lohnsteuerbetrag, boolean kinder, double kinderfreibetrag, String bundesland, double bruttolohn, String rentenversicherung, String krankenversicherung, String pflegeversicherung, String arbeitslosenversicherung, double krankenversicherungszusatz, double rentenversicherungprivat, boolean kirchensteuer) {
+    public CalculationSteuer(int year, int month, int day, double lohnsteuerbetrag, boolean kinder, double kinderfreibetrag, String bundesland, double bruttolohn, String rentenversicherung, String krankenversicherung, double krankenversicherungszusatz, double rentenversicherungprivat, boolean kirchensteuer) {
         this.year = year;
         this.month = month;
         this.day = day;
@@ -33,14 +32,13 @@ public class CalculationSteuer {
         this.bruttolohn = bruttolohn;
         this.rentenversicherung = rentenversicherung;
         this.krankenversicherung = krankenversicherung;
-        this.pflegeversicherung = pflegeversicherung;
-        this.arbeitslosenversicherung = arbeitslosenversicherung;
+
         this.krankenversicherungszusatz = krankenversicherungszusatz;
         this.rentenversicherungprivat = rentenversicherungprivat;
         this.kirchensteuer = kirchensteuer;
     }
 
-    private double calculateSteuer(){
+    public double calculateSteuer(){
         double endBetrag = 0;
         double rentenversicherungsBetrag = 0;
         double arbeitslosenversicherungsBetrag = 0;
@@ -57,9 +55,9 @@ public class CalculationSteuer {
             rentenversicherungsBetrag = 0;
         }
 
-        if(arbeitslosenversicherung == ""){
-            arbeitslosenversicherungsBetrag = (bruttolohn/100) * 1.25;
-        }
+//        if(arbeitslosenversicherung == ""){
+//            arbeitslosenversicherungsBetrag = (bruttolohn/100) * 1.25;
+//        }
 
         if(krankenversicherung == "14,6 %"){
             krankenversicherungsBetrag = (bruttolohn/100) * (7.3 + krankenversicherungszusatz);
@@ -69,14 +67,13 @@ public class CalculationSteuer {
             krankenversicherungsBetrag =  krankenversicherungszusatz;
         }
 
-        if(pflegeversicherung == "") {
-            if(checkAlter(year,month,day) > 23 && kinder == false){
+        if(checkAlter(year,month,day) > 23 && kinder == false){
                 pflegeversicherungsBetrag = (bruttolohn/100) * 1.775;
-            }else{
+        }else{
                 pflegeversicherungsBetrag = (bruttolohn/100) * 1.525;
-            }
-
         }
+
+
 
         if(kirchensteuer){
             kirchensteuerBetrag = (lohnsteuerbetrag/100) * kirchensteuerSatz();

@@ -55,7 +55,7 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
         spinner.setOnItemSelectedListener(this);
 
 
-        Spinner ddBundesland = (Spinner) view.findViewById(R.id.dropdownarbeitsstelle);
+        final Spinner ddBundesland = (Spinner) view.findViewById(R.id.dropdownarbeitsstelle);
 
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getContext(), R.array.Arbeitsstelle, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -63,12 +63,15 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
 
         spinner.setOnItemSelectedListener(this);
 
-        Spinner ddRente = (Spinner) view.findViewById(R.id.spinnerRente);
+        final Spinner ddRente = (Spinner) view.findViewById(R.id.spinnerRente);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(getContext(), R.array.Rentenversicherung, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(this);
+
+        final Spinner ddKranken = (Spinner) view.findViewById(R.id.dropdownkranken);
+
 
         spinner.setSelection(0);
         ddKlasse.setSelection(0);
@@ -100,13 +103,14 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
         });
 
         final RadioButton rButtonKinderYes = view.findViewById(R.id.rBtnKinderYes);
-        RadioButton rButtonKircheYes = (RadioButton) view.findViewById(R.id.rBtnKircheJa);
+        final RadioButton rButtonKircheYes = (RadioButton) view.findViewById(R.id.rBtnKircheJa);
         final EditText lohnsteuer = view.findViewById(R.id.Lohnsteuer);
         final EditText bruttolohn = view.findViewById(R.id.bruttolohn);
-        final TextView KifreiBetr = (TextView) view.findViewById(R.id.kinderfreibetrag);
-        final EditText Kirchensteuer1 = (EditText) view.findViewById(R.id.kirchensteuer2);
-        KifreiBetr.setVisibility(View.INVISIBLE);
-        final EditText Rente = view.findViewById(R.id.editTextRentenbeitrag);
+        final TextView kifreibetr = (TextView) view.findViewById(R.id.kinderfreibetrag);
+        final EditText kirchensteuer = (EditText) view.findViewById(R.id.kirchensteuer2);
+        final EditText rente = view.findViewById(R.id.editTextRentenbeitrag);
+        final EditText zusatzversicherung = view.findViewById(R.id.zusatzbeitrag);
+        final EditText rentenzusatz = view.findViewById(R.id.editTextRentenbeitrag);
 
 
 
@@ -115,16 +119,11 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                   // KifreiBetr.setEnabled(true);
-                 //  KifreiBetr.setVisibility(View.VISIBLE);
-                   //spinner.setVisibility(View.VISIBLE);
-                    KifreiBetr.setVisibility(View.VISIBLE);
+                    kifreibetr.setVisibility(View.VISIBLE);
                     spinner.setVisibility(View.VISIBLE);
 
                 }else{
-                  // KifreiBetr.setVisibility(View.INVISIBLE);
-                  // spinner.setVisibility(View.INVISIBLE);
-                    KifreiBetr.setVisibility(View.GONE);
+                    kifreibetr.setVisibility(View.GONE);
                     spinner.setVisibility(View.GONE);
 
                 }
@@ -136,10 +135,10 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    Kirchensteuer1.setVisibility(View.VISIBLE);
+                    kirchensteuer.setVisibility(View.VISIBLE);
 
                 }else{
-                    Kirchensteuer1.setVisibility(View.GONE);
+                    kirchensteuer.setVisibility(View.GONE);
                 }
             }
         });
@@ -153,9 +152,9 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
 
                 if (parent.getItemAtPosition(position).equals("Privatversichert")){
 
-                    Rente.setVisibility(View.VISIBLE);
+                    rente.setVisibility(View.VISIBLE);
                 } else {
-                    Rente.setVisibility(View.GONE);
+                    rente.setVisibility(View.GONE);
                 }
             }
 
@@ -165,21 +164,43 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
             }
         });
 
-        //String dateTime = geburtstag.getText().toString();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("DD.MM.YYYY");
-        //final LocalDateTime formatDateTime = LocalDateTime.parse(dateTime, formatter);
-        //final double lohnsteuerBetrag = Double.parseDouble(lohnsteuer.getText().toString());
-        //final double kinderfreiBetrag = Double.parseDouble(spinner.getSelectedItem().toString());
-        //final String bundesland = ddBundesland.getSelectedItem().toString();
-        //final double bruttolohnBetrag = Double.parseDouble(bruttolohn.getText().toString());
-        //final int rentenversicherungs;
+
+
 
         btnCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "FragmentHome" , Toast.LENGTH_SHORT).show();
-                //CalculationSteuer steuer = new CalculationSteuer(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), lohnsteuerBetrag,rButtonKinderYes.isChecked(), kinderfreiBetrag, bundesland, bruttolohnBetrag);
+                String temporarystring;
+                double rentenzusatzB = 0;
+                double lohnsteuerBetrag = 0;
+                double kinderfreiBetrag = 0;
+                double bruttolohnBetrag = 0;
+                double zusatzBetrag = 0;
+
+                final String rentenversicherung = ddRente.getSelectedItem().toString();
+                final String krankenversicherung = ddKranken.getSelectedItem().toString();
+                final String bundesland = ddBundesland.getSelectedItem().toString();
+
+                temporarystring = lohnsteuer.getText().toString();
+                lohnsteuerBetrag = Double.parseDouble(temporarystring);
+                temporarystring = spinner.getSelectedItem().toString();
+                kinderfreiBetrag = Double.parseDouble(temporarystring);
+                temporarystring = bruttolohn.getText().toString();
+                bruttolohnBetrag = Double.parseDouble(temporarystring);
+                temporarystring = zusatzversicherung.getText().toString();
+                zusatzBetrag = Double.parseDouble(temporarystring);
+                if(rentenzusatz.getVisibility() == View.VISIBLE){
+                    temporarystring = rentenzusatz.getText().toString();
+                     rentenzusatzB = Double.parseDouble(temporarystring);
+                }
+
+
+                CalculationSteuer steuer = new CalculationSteuer(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), lohnsteuerBetrag,rButtonKinderYes.isChecked(),
+                        kinderfreiBetrag, bundesland, bruttolohnBetrag, rentenversicherung, krankenversicherung, zusatzBetrag, rentenzusatzB ,rButtonKircheYes.isChecked());
+                double betrag =  steuer.calculateSteuer();
+
+                Toast.makeText(getActivity(), Double.toString(steuer.calculateSteuer()), Toast.LENGTH_SHORT).show();
 
             }
         });
