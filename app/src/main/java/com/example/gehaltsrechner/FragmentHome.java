@@ -70,10 +70,10 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
 
         spinner.setOnItemSelectedListener(this);
 
-        spinner.setSelection(1);
-        ddKlasse.setSelection(1);
-        ddBundesland.setSelection(1);
-        ddRente.setSelection(1);
+        spinner.setSelection(0);
+        ddKlasse.setSelection(0);
+        ddBundesland.setSelection(0);
+        ddRente.setSelection(0);
 
 
 
@@ -139,7 +139,7 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
                     Kirchensteuer1.setVisibility(View.VISIBLE);
 
                 }else{
-                    Kirchensteuer1.setVisibility(View.INVISIBLE);
+                    Kirchensteuer1.setVisibility(View.GONE);
                 }
             }
         });
@@ -155,7 +155,7 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
 
                     Rente.setVisibility(View.VISIBLE);
                 } else {
-                    Rente.setVisibility(View.INVISIBLE);
+                    Rente.setVisibility(View.GONE);
                 }
             }
 
