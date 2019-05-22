@@ -50,4 +50,6 @@
         <item>Nicht versichert</item>
     </string-array>
 
+    <string name="Button">Berechnen</string>
+
 </resources>

@@ -1,9 +1,11 @@
 package com.example.gehaltsrechner;
 
-import java.time.LocalDateTime;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class CalculationSteuer {
-    private LocalDateTime geburtstag;
+    private Date geburtstag;
     private double lohnsteuerbetrag;
     private boolean kinder;
     private double kinderfreibetrag;
@@ -18,7 +20,7 @@ public class CalculationSteuer {
 
 
 
-    public CalculationSteuer(LocalDateTime geburtstag, float lohnsteuerbetrag, boolean kinder, float kinderfreibetrag, String bundesland, float bruttolohn, int rentenversicherung, int krankenversicherung, int pflegeversicherung, int arbeitslosenversicherung, float krankenversicherungszusatz, boolean kirchensteuer) {
+    public CalculationSteuer(Date geburtstag, double lohnsteuerbetrag, boolean kinder, double kinderfreibetrag, String bundesland, double bruttolohn, int rentenversicherung, int krankenversicherung, int pflegeversicherung, int arbeitslosenversicherung, double krankenversicherungszusatz, boolean kirchensteuer) {
         this.geburtstag = geburtstag;
         this.lohnsteuerbetrag = lohnsteuerbetrag;
         this.kinder = kinder;
@@ -53,15 +55,15 @@ public class CalculationSteuer {
         if(krankenversicherung == 1){
             krankenversicherungsBetrag = (bruttolohn/100) * (7.3 + krankenversicherungszusatz);
         }
-
-        if(pflegeversicherung == 1) {
-            if(checkAlter(geburtstag) > 23 && kinder == false){
-                pflegeversicherungsBetrag = (bruttolohn/100) * 1.775;
-            }else{
-                pflegeversicherungsBetrag = (bruttolohn/100) * 1.525;
-            }
-
-        }
+//TODO
+//        if(pflegeversicherung == 1) {
+//            if(checkAlter(geburtstag) > 23 && kinder == false){
+//                pflegeversicherungsBetrag = (bruttolohn/100) * 1.775;
+//            }else{
+//                pflegeversicherungsBetrag = (bruttolohn/100) * 1.525;
+//            }
+//
+//        }
 
         if(kirchensteuer){
             kirchensteuerBetrag = (lohnsteuerbetrag/100) * kirchensteuerSatz();
@@ -76,17 +78,20 @@ public class CalculationSteuer {
         return endBetrag;
     }
 
-    private  int checkAlter(LocalDateTime geburtstag){
+    private  int checkAlter(int year, int month, int day){
+        Calendar cheute = Calendar.getInstance();
+        Calendar cgeburtstag = Calendar.getInstance();
         int alter;
-        LocalDateTime aktuellesJahr = LocalDateTime.now();
 
-        alter = aktuellesJahr.getYear() - geburtstag.getYear();
+        cgeburtstag.set(year, month, day);
+        alter = cheute.get(Calendar.YEAR) - cgeburtstag.get(Calendar.YEAR);
+
         return alter;
     }
 
     private double kirchensteuerSatz(){
         if(kirchensteuer){
-            if(bundesland == "Bayern" || bundesland == "Baden Württemberg"){
+            if(bundesland == "Bayern" || bundesland == "Baden-Württemberg"){
                 return 8.0;
             }
             return 9.0;
