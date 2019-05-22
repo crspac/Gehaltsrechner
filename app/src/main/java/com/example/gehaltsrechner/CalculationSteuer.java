@@ -2,26 +2,30 @@ package com.example.gehaltsrechner;
 
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class CalculationSteuer {
-    private Date geburtstag;
+    private int year;
+    private int month;
+    private int day;
     private double lohnsteuerbetrag;
     private boolean kinder;
     private double kinderfreibetrag;
     private String bundesland;
     private double bruttolohn;
-    private int rentenversicherung;
-    private int krankenversicherung;
-    private int pflegeversicherung;
-    private int arbeitslosenversicherung;
+    private String rentenversicherung;
+    private String krankenversicherung;
+    private String pflegeversicherung;
+    private String arbeitslosenversicherung;
     private double krankenversicherungszusatz;
+    private double rentenversicherungprivat;
     private boolean kirchensteuer;
 
 
 
-    public CalculationSteuer(Date geburtstag, double lohnsteuerbetrag, boolean kinder, double kinderfreibetrag, String bundesland, double bruttolohn, int rentenversicherung, int krankenversicherung, int pflegeversicherung, int arbeitslosenversicherung, double krankenversicherungszusatz, boolean kirchensteuer) {
-        this.geburtstag = geburtstag;
+    public CalculationSteuer(int year, int month, int day, double lohnsteuerbetrag, boolean kinder, double kinderfreibetrag, String bundesland, double bruttolohn, String rentenversicherung, String krankenversicherung, String pflegeversicherung, String arbeitslosenversicherung, double krankenversicherungszusatz, double rentenversicherungprivat, boolean kirchensteuer) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
         this.lohnsteuerbetrag = lohnsteuerbetrag;
         this.kinder = kinder;
         this.kinderfreibetrag = kinderfreibetrag;
@@ -32,6 +36,7 @@ public class CalculationSteuer {
         this.pflegeversicherung = pflegeversicherung;
         this.arbeitslosenversicherung = arbeitslosenversicherung;
         this.krankenversicherungszusatz = krankenversicherungszusatz;
+        this.rentenversicherungprivat = rentenversicherungprivat;
         this.kirchensteuer = kirchensteuer;
     }
 
@@ -44,26 +49,34 @@ public class CalculationSteuer {
         double kirchensteuerBetrag = 0;
         double soliBetrag = 0;
 
-        if(rentenversicherung == 1){
+        if(rentenversicherung == "Gesetzlich Pflichtversichert"){
             rentenversicherungsBetrag = (bruttolohn/100) * 9.3;
+        }else if(rentenversicherung == "Privatversichert"){
+            rentenversicherungsBetrag =  rentenversicherungprivat;
+        }else{
+            rentenversicherungsBetrag = 0;
         }
 
-        if(arbeitslosenversicherung == 1){
+        if(arbeitslosenversicherung == ""){
             arbeitslosenversicherungsBetrag = (bruttolohn/100) * 1.25;
         }
 
-        if(krankenversicherung == 1){
+        if(krankenversicherung == "14,6 %"){
             krankenversicherungsBetrag = (bruttolohn/100) * (7.3 + krankenversicherungszusatz);
+        }else if(krankenversicherung == "14 %"){
+            krankenversicherungsBetrag = (bruttolohn/100) * (7 + krankenversicherungszusatz);
+        }else{
+            krankenversicherungsBetrag =  krankenversicherungszusatz;
         }
-//TODO
-//        if(pflegeversicherung == 1) {
-//            if(checkAlter(geburtstag) > 23 && kinder == false){
-//                pflegeversicherungsBetrag = (bruttolohn/100) * 1.775;
-//            }else{
-//                pflegeversicherungsBetrag = (bruttolohn/100) * 1.525;
-//            }
-//
-//        }
+
+        if(pflegeversicherung == "") {
+            if(checkAlter(year,month,day) > 23 && kinder == false){
+                pflegeversicherungsBetrag = (bruttolohn/100) * 1.775;
+            }else{
+                pflegeversicherungsBetrag = (bruttolohn/100) * 1.525;
+            }
+
+        }
 
         if(kirchensteuer){
             kirchensteuerBetrag = (lohnsteuerbetrag/100) * kirchensteuerSatz();

@@ -179,7 +179,7 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
 
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "FragmentHome" , Toast.LENGTH_SHORT).show();
-                //CalculationSteuer steuer = new CalculationSteuer(formatDateTime, lohnsteuerBetrag,rButtonKinderYes.isChecked(), kinderfreiBetrag, bundesland, bruttolohnBetrag);
+                //CalculationSteuer steuer = new CalculationSteuer(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), lohnsteuerBetrag,rButtonKinderYes.isChecked(), kinderfreiBetrag, bundesland, bruttolohnBetrag);
 
             }
         });

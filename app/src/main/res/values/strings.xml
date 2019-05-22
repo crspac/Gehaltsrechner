@@ -50,14 +50,14 @@
         <item>Nicht versichert</item>
     </string-array>
 
-<<<<<<< Updated upstream
+
     <string name="Button">Berechnen</string>
-=======
+
     <string-array name="Krankenversicherung">
         <item>14,6 %</item>
         <item>14 %</item>
         <item>Privatversichert </item>
     </string-array>
->>>>>>> Stashed changes
+
 
 </resources>
