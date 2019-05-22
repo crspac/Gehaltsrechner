@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
+<android.support.v4.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     xmlns:android="http://schemas.android.com/apk/res/android">
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/androidbackground">
 
+
+    <Spinner
+        android:id="@+id/dropdownkranken"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#00FD0000"
+        android:entries="@array/Krankenversicherung"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/krankenversicherungsbeitrag2"
+        app:layout_constraintTop_toBottomOf="@+id/kirchensteuer2" />
 
     <Spinner
         android:id="@+id/dropdownarbeitsstelle"
@@ -19,6 +33,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="12dp"
+        android:background="#00FF0000"
         android:entries="@array/Arbeitsstelle"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
@@ -116,7 +131,7 @@
         android:layout_marginEnd="8dp"
         android:cursorVisible="false"
         android:ems="10"
-        android:hint="Hier Zusatzbeitrag"
+        android:hint="Zusatzbeitrag / Beitrag"
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
         android:singleLine="false"
@@ -128,7 +143,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/krankenversicherungsbeitrag2" />
 
-    <EditText
+    <TextView
         android:id="@+id/krankenversicherungsbeitrag2"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
@@ -186,11 +201,11 @@
         android:text="Kinderfreibetrag"
         android:textIsSelectable="false"
         android:textSize="23dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kinder" />
+        app:layout_constraintTop_toBottomOf="@+id/kinder"/>
 
     <TextView
 
@@ -240,6 +255,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="10dp"
+        android:background="#00FF0000"
         android:entries="@array/Steuerklasse"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
@@ -254,9 +270,10 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="10dp"
+        android:background="#00FF0000"
         android:entries="@array/Kinderfreibetrag"
         android:spinnerMode="dropdown"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/kinderfreibetrag"
@@ -365,6 +382,7 @@
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="#00FF0000"
         android:entries="@array/Rentenversicherung"
         app:layout_constraintStart_toEndOf="@+id/rentenvers."
         app:layout_constraintTop_toBottomOf="@+id/arbeitsstelle" />

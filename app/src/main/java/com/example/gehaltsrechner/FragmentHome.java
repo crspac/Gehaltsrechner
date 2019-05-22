@@ -51,9 +51,12 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+
         spinner.setOnItemSelectedListener(this);
 
+
         Spinner ddBundesland = (Spinner) view.findViewById(R.id.dropdownarbeitsstelle);
+
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getContext(), R.array.Arbeitsstelle, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -66,6 +69,12 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(this);
+
+        spinner.setSelection(1);
+        ddKlasse.setSelection(1);
+        ddBundesland.setSelection(1);
+        ddRente.setSelection(1);
+
 
 
         final EditText geburtstag = view.findViewById(R.id.geburtstag);
@@ -100,15 +109,24 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
         final EditText Rente = view.findViewById(R.id.editTextRentenbeitrag);
 
 
+
         rButtonKinderYes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
+                   // KifreiBetr.setEnabled(true);
+                 //  KifreiBetr.setVisibility(View.VISIBLE);
+                   //spinner.setVisibility(View.VISIBLE);
                     KifreiBetr.setVisibility(View.VISIBLE);
                     spinner.setVisibility(View.VISIBLE);
+
                 }else{
-                    KifreiBetr.setVisibility(View.INVISIBLE);
-                    spinner.setVisibility(View.INVISIBLE);
+                  // KifreiBetr.setVisibility(View.INVISIBLE);
+                  // spinner.setVisibility(View.INVISIBLE);
+                    KifreiBetr.setVisibility(View.GONE);
+                    spinner.setVisibility(View.GONE);
+
                 }
             }
         });

@@ -18,9 +18,6 @@ public class FragmentOutput extends Fragment {
 
 
 
-
-
-
         return view;
 
 
