@@ -14,14 +14,21 @@ public class CalculationSteuer {
     private double bruttolohn;
     private String rentenversicherung;
     private String krankenversicherung;
-    //private String arbeitslosenversicherung;
+    private String arbeitslosenversicherung;
     private double krankenversicherungszusatz;
     private double rentenversicherungprivat;
     private boolean kirchensteuer;
+    private double endBetrag = 0;
+    private double rentenversicherungsBetrag = 0;
+    private double arbeitslosenversicherungsBetrag = 0;
+    private double krankenversicherungsBetrag = 0;
+    private double pflegeversicherungsBetrag = 0;
+    private double kirchensteuerBetrag = 0;
+    private double soliBetrag = 0;
 
 
 
-    public CalculationSteuer(int year, int month, int day, double lohnsteuerbetrag, boolean kinder, double kinderfreibetrag, String bundesland, double bruttolohn, String rentenversicherung, String krankenversicherung, double krankenversicherungszusatz, double rentenversicherungprivat, boolean kirchensteuer) {
+    public CalculationSteuer(int year, int month, int day, double lohnsteuerbetrag, boolean kinder, double kinderfreibetrag, String bundesland, double bruttolohn, String rentenversicherung, String krankenversicherung, double krankenversicherungszusatz, double rentenversicherungprivat, boolean kirchensteuer, String arbeitslosenversicherung) {
         this.year = year;
         this.month = month;
         this.day = day;
@@ -32,20 +39,14 @@ public class CalculationSteuer {
         this.bruttolohn = bruttolohn;
         this.rentenversicherung = rentenversicherung;
         this.krankenversicherung = krankenversicherung;
-
+        this.arbeitslosenversicherung = arbeitslosenversicherung;
         this.krankenversicherungszusatz = krankenversicherungszusatz;
         this.rentenversicherungprivat = rentenversicherungprivat;
         this.kirchensteuer = kirchensteuer;
     }
 
     public double calculateSteuer(){
-        double endBetrag = 0;
-        double rentenversicherungsBetrag = 0;
-        double arbeitslosenversicherungsBetrag = 0;
-        double krankenversicherungsBetrag = 0;
-        double pflegeversicherungsBetrag = 0;
-        double kirchensteuerBetrag = 0;
-        double soliBetrag = 0;
+
 
         if(rentenversicherung == "Gesetzlich Pflichtversichert"){
             rentenversicherungsBetrag = (bruttolohn/100) * 9.3;
@@ -55,11 +56,13 @@ public class CalculationSteuer {
             rentenversicherungsBetrag = 0;
         }
 
-//        if(arbeitslosenversicherung == ""){
-//            arbeitslosenversicherungsBetrag = (bruttolohn/100) * 1.25;
-//        }
+        if(arbeitslosenversicherung == "Gesetzlich Pflichtversichert"){
+            arbeitslosenversicherungsBetrag = (bruttolohn/100) * 1.25;
+        }else{
+            arbeitslosenversicherungsBetrag = 0;
+        }
 
-        if(krankenversicherung == "14,6 %"){
+        if(krankenversicherung == "14.6 %"){
             krankenversicherungsBetrag = (bruttolohn/100) * (7.3 + krankenversicherungszusatz);
         }else if(krankenversicherung == "14 %"){
             krankenversicherungsBetrag = (bruttolohn/100) * (7 + krankenversicherungszusatz);
@@ -109,5 +112,73 @@ public class CalculationSteuer {
         return 0;
     }
 
+    public double getLohnsteuerbetrag() {
+        return lohnsteuerbetrag;
+    }
+
+    public boolean isKinder() {
+        return kinder;
+    }
+
+    public double getKinderfreibetrag() {
+        return kinderfreibetrag;
+    }
+
+    public String getBundesland() {
+        return bundesland;
+    }
+
+    public String getRentenversicherung() {
+        return rentenversicherung;
+    }
+
+    public String getKrankenversicherung() {
+        return krankenversicherung;
+    }
+
+    public double getKrankenversicherungszusatz() {
+        return krankenversicherungszusatz;
+    }
+
+    public double getRentenversicherungprivat() {
+        return rentenversicherungprivat;
+    }
+
+    public boolean isKirchensteuer() {
+        return kirchensteuer;
+    }
+
+    public double getEndBetrag() {
+        return endBetrag;
+    }
+
+    public double getRentenversicherungsBetrag() {
+        return rentenversicherungsBetrag;
+    }
+
+    public double getArbeitslosenversicherungsBetrag() {
+        return arbeitslosenversicherungsBetrag;
+    }
+
+    public double getKrankenversicherungsBetrag() {
+        return krankenversicherungsBetrag;
+    }
+
+    public double getPflegeversicherungsBetrag() {
+        return pflegeversicherungsBetrag;
+    }
+
+    public double getKirchensteuerBetrag() {
+        return kirchensteuerBetrag;
+    }
+
+    public double getSoliBetrag() {
+        return soliBetrag;
+    }
+
+
+    public double getBruttolohn() {
+        return bruttolohn;
+    }
 
 }

@@ -1,6 +1,8 @@
 package com.example.gehaltsrechner;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,16 +23,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-import java.util.Locale;
 
 public class FragmentHome extends Fragment implements AdapterView.OnItemSelectedListener {
     private static final String TAG = "Fragment_Home";
 
     private Calendar calendar = Calendar.getInstance();
     private Button btnCalculate;
+    static CalculationSteuer steuer;
+    FragmentOutput frg = new FragmentOutput();
 
     @Nullable
     @Override
@@ -70,6 +71,15 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
 
         spinner.setOnItemSelectedListener(this);
 
+        final Spinner ddAlosen = (Spinner) view.findViewById(R.id.dropdownarbeitsstelle);
+
+        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(getContext(), R.array.Alosenversicherung, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(this);
+
+
         final Spinner ddKranken = (Spinner) view.findViewById(R.id.dropdownkranken);
 
 
@@ -77,10 +87,11 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
         ddKlasse.setSelection(0);
         ddBundesland.setSelection(0);
         ddRente.setSelection(0);
+        ddAlosen.setSelection(0);
 
 
 
-        final EditText geburtstag = view.findViewById(R.id.geburtstag);
+        final EditText geburtstag = view.findViewById(R.id.Geburtstag);
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -105,11 +116,11 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
         final RadioButton rButtonKinderYes = view.findViewById(R.id.rBtnKinderYes);
         final RadioButton rButtonKircheYes = (RadioButton) view.findViewById(R.id.rBtnKircheJa);
         final EditText lohnsteuer = view.findViewById(R.id.Lohnsteuer);
-        final EditText bruttolohn = view.findViewById(R.id.bruttolohn);
+        final EditText bruttolohn = view.findViewById(R.id.Bruttolohn);
         final TextView kifreibetr = (TextView) view.findViewById(R.id.kinderfreibetrag);
         final EditText kirchensteuer = (EditText) view.findViewById(R.id.kirchensteuer2);
         final EditText rente = view.findViewById(R.id.editTextRentenbeitrag);
-        final EditText zusatzversicherung = view.findViewById(R.id.zusatzbeitrag);
+        final EditText zusatzversicherung = view.findViewById(R.id.Zusatzbeitrag);
         final EditText rentenzusatz = view.findViewById(R.id.editTextRentenbeitrag);
 
 
@@ -166,12 +177,12 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
 
 
 
-
         btnCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View v) {
                 String temporarystring;
+                EditText[] array = {bruttolohn, zusatzversicherung, geburtstag,lohnsteuer};
                 double rentenzusatzB = 0;
                 double lohnsteuerBetrag = 0;
                 double kinderfreiBetrag = 0;
@@ -181,26 +192,32 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
                 final String rentenversicherung = ddRente.getSelectedItem().toString();
                 final String krankenversicherung = ddKranken.getSelectedItem().toString();
                 final String bundesland = ddBundesland.getSelectedItem().toString();
+                final String arbeitslosenversicherung = ddAlosen.getSelectedItem().toString();
 
-                temporarystring = lohnsteuer.getText().toString();
-                lohnsteuerBetrag = Double.parseDouble(temporarystring);
-                temporarystring = spinner.getSelectedItem().toString();
-                kinderfreiBetrag = Double.parseDouble(temporarystring);
-                temporarystring = bruttolohn.getText().toString();
-                bruttolohnBetrag = Double.parseDouble(temporarystring);
-                temporarystring = zusatzversicherung.getText().toString();
-                zusatzBetrag = Double.parseDouble(temporarystring);
-                if(rentenzusatz.getVisibility() == View.VISIBLE){
-                    temporarystring = rentenzusatz.getText().toString();
-                     rentenzusatzB = Double.parseDouble(temporarystring);
+                if(checkFieldEmpty(array)){
+
+                }else{
+                    temporarystring = lohnsteuer.getText().toString();
+                    lohnsteuerBetrag = Double.parseDouble(temporarystring);
+                    temporarystring = spinner.getSelectedItem().toString();
+                    kinderfreiBetrag = Double.parseDouble(temporarystring);
+                    temporarystring = bruttolohn.getText().toString();
+                    bruttolohnBetrag = Double.parseDouble(temporarystring);
+                    temporarystring = zusatzversicherung.getText().toString();
+                    zusatzBetrag = Double.parseDouble(temporarystring);
+                    if(rentenzusatz.getVisibility() == View.VISIBLE){
+                        temporarystring = rentenzusatz.getText().toString();
+                        rentenzusatzB = Double.parseDouble(temporarystring);
+                    }
+                    steuer = new CalculationSteuer(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), lohnsteuerBetrag,rButtonKinderYes.isChecked(),
+                            kinderfreiBetrag, bundesland, bruttolohnBetrag, rentenversicherung, krankenversicherung, zusatzBetrag, rentenzusatzB ,rButtonKircheYes.isChecked(),arbeitslosenversicherung );
+                    steuer.calculateSteuer();
+                    frg.updateTextFields();
+                    Toast.makeText(getActivity(), Double.toString(steuer.calculateSteuer()), Toast.LENGTH_SHORT).show();
+                    ((MainActivity)getActivity()).setViewPager(1);
+
                 }
 
-
-                CalculationSteuer steuer = new CalculationSteuer(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), lohnsteuerBetrag,rButtonKinderYes.isChecked(),
-                        kinderfreiBetrag, bundesland, bruttolohnBetrag, rentenversicherung, krankenversicherung, zusatzBetrag, rentenzusatzB ,rButtonKircheYes.isChecked());
-                double betrag =  steuer.calculateSteuer();
-
-                Toast.makeText(getActivity(), Double.toString(steuer.calculateSteuer()), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -231,5 +248,32 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
 
     }
 
+    public void showErrorMessage(String title, String msg){
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                getContext());
+        alertDialogBuilder.setTitle(title);
+
+        alertDialogBuilder.setMessage(msg).setCancelable(false).setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        alertDialog.show();
+    }
+
+    public boolean checkFieldEmpty(EditText[] array){
+        for(int i = 0; i < array.length; i++){
+            if(array[i].getText().toString().matches("")){
+                int name = array[i].getId();
+                showErrorMessage("Leeres Feld", array[i].getResources().getResourceEntryName(name) +" darf nicht leer sein!");
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

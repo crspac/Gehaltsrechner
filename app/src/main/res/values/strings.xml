@@ -59,5 +59,13 @@
         <item>Privatversichert </item>
     </string-array>
 
+    <string-array name="Alosenversicherung">
+        <item>Gesetzlich Pflichtversichert</item>
+        <item>Nicht Gesetzlich Pflichtversichert</item>
+        <item>Nur AG-Anteil </item>
+        <item>Nur AN-Anteil </item>
+    </string-array>
+
+
 
 </resources>
