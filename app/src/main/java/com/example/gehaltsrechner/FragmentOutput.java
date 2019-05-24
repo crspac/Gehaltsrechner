@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import java.text.DecimalFormat;
 
 public class FragmentOutput extends Fragment {
 
@@ -49,15 +52,16 @@ public class FragmentOutput extends Fragment {
     }
 
     public static void updateTextFields(){
+        DecimalFormat numberFormat = new DecimalFormat("0.00");
         Brutto.setText(Double.toString(FragmentHome.steuer.getBruttolohn()));
-        Lohnsteuer.setText(Double.toString(FragmentHome.steuer.getLohnsteuerbetrag()));
-        Kirchensteuer.setText(Double.toString(FragmentHome.steuer.getKirchensteuerBetrag()));
-        Soli.setText(Double.toString(FragmentHome.steuer.getSoliBetrag()));
-        Rente.setText(Double.toString(FragmentHome.steuer.getRentenversicherungsBetrag()));
-        Kranken.setText(Double.toString(FragmentHome.steuer.getKrankenversicherungsBetrag()));
-        Alosen.setText(Double.toString(FragmentHome.steuer.getArbeitslosenversicherungsBetrag()));
-        Pflege.setText(Double.toString(FragmentHome.steuer.getPflegeversicherungsBetrag()));
-        Netto.setText(Double.toString(FragmentHome.steuer.getEndBetrag()));
+        Lohnsteuer.setText(numberFormat.format(FragmentHome.steuer.getLohnsteuerbetrag()));
+        Kirchensteuer.setText(numberFormat.format(FragmentHome.steuer.getKirchensteuerBetrag()));
+        Soli.setText(numberFormat.format(FragmentHome.steuer.getSoliBetrag()));
+        Rente.setText(numberFormat.format(FragmentHome.steuer.getRentenversicherungsBetrag()));
+        Kranken.setText(numberFormat.format(FragmentHome.steuer.getKrankenversicherungsBetrag()));
+        Alosen.setText(numberFormat.format(FragmentHome.steuer.getArbeitslosenversicherungsBetrag()));
+        Pflege.setText(numberFormat.format(FragmentHome.steuer.getPflegeversicherungsBetrag()));
+        Netto.setText(numberFormat.format(FragmentHome.steuer.getEndBetrag()));
     }
 
     public void onBackPressed()

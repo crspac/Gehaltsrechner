@@ -1,6 +1,8 @@
 package com.example.gehaltsrechner;
 
 
+import android.util.Log;
+
 import java.util.Calendar;
 
 public class CalculationSteuer {
@@ -48,23 +50,23 @@ public class CalculationSteuer {
     public double calculateSteuer(){
 
 
-        if(rentenversicherung == "Gesetzlich Pflichtversichert"){
+        if(rentenversicherung.equalsIgnoreCase("Gesetzlich Pflichtversichert")){
             rentenversicherungsBetrag = (bruttolohn/100) * 9.3;
-        }else if(rentenversicherung == "Privatversichert"){
+        }else if(rentenversicherung.equalsIgnoreCase("Privatversichert")){
             rentenversicherungsBetrag =  rentenversicherungprivat;
         }else{
             rentenversicherungsBetrag = 0;
         }
 
-        if(arbeitslosenversicherung == "Gesetzlich Pflichtversichert"){
+        if(arbeitslosenversicherung.equalsIgnoreCase("Gesetzlich Pflichtversichert")){
             arbeitslosenversicherungsBetrag = (bruttolohn/100) * 1.25;
         }else{
             arbeitslosenversicherungsBetrag = 0;
         }
 
-        if(krankenversicherung == "14.6 %"){
+        if(krankenversicherung.equalsIgnoreCase("14.6 %")){
             krankenversicherungsBetrag = (bruttolohn/100) * (7.3 + krankenversicherungszusatz);
-        }else if(krankenversicherung == "14 %"){
+        }else if(krankenversicherung.equalsIgnoreCase("14 %")){
             krankenversicherungsBetrag = (bruttolohn/100) * (7 + krankenversicherungszusatz);
         }else{
             krankenversicherungsBetrag =  krankenversicherungszusatz;
@@ -82,7 +84,7 @@ public class CalculationSteuer {
             kirchensteuerBetrag = (lohnsteuerbetrag/100) * kirchensteuerSatz();
         }
 
-        if(lohnsteuerbetrag < 81){
+        if(lohnsteuerbetrag > 81.0){
             soliBetrag = (lohnsteuerbetrag/100) * 5.5;
         }
 

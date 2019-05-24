@@ -71,7 +71,7 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
 
         spinner.setOnItemSelectedListener(this);
 
-        final Spinner ddAlosen = (Spinner) view.findViewById(R.id.dropdownarbeitsstelle);
+        final Spinner ddAlosen = (Spinner) view.findViewById(R.id.spinnerAlosen);
 
         ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(getContext(), R.array.Alosenversicherung, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -118,7 +118,6 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
         final EditText lohnsteuer = view.findViewById(R.id.Lohnsteuer);
         final EditText bruttolohn = view.findViewById(R.id.Bruttolohn);
         final TextView kifreibetr = (TextView) view.findViewById(R.id.kinderfreibetrag);
-        final EditText kirchensteuer = (EditText) view.findViewById(R.id.kirchensteuer2);
         final EditText rente = view.findViewById(R.id.editTextRentenbeitrag);
         final EditText zusatzversicherung = view.findViewById(R.id.Zusatzbeitrag);
         final EditText rentenzusatz = view.findViewById(R.id.editTextRentenbeitrag);
@@ -141,18 +140,6 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemSelected
             }
         });
 
-
-        rButtonKircheYes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    kirchensteuer.setVisibility(View.VISIBLE);
-
-                }else{
-                    kirchensteuer.setVisibility(View.GONE);
-                }
-            }
-        });
 
 
         ddRente.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
